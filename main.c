@@ -25,9 +25,9 @@ int main(int argc, char **argv) {
   /* print_matrix( make_hermite() ); */
 
   if ( argc == 2 )
-    parse_file( argv[1], transform, edges, polygons, s );
+    parse_file( argv[1], transform, edges, s );
   else
-    parse_file( "stdin", transform, edges, polygons, s );
+    parse_file( "stdin", transform, edges, s );
 
   
   free_matrix( edges );

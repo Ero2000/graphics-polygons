@@ -7,7 +7,6 @@
 void parse_file ( char * filename, 
 		  struct matrix * transform, 
 		  struct matrix * edges,
-		  struct matrix * polygons,
 		  screen s);
 
 #endif
