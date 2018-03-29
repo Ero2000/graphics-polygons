@@ -32,6 +32,17 @@ void add_polygon( struct matrix *polygons,
   add_point(polygons, x2, y2, z2);
 }
 
+matrix cross_product(double x0, double y0, double z0, //P0
+                     double x1, double y1, double z1, //P1
+                     double x2, double y2, double z2){ //P2
+  new matrix * ret;
+  ret = (3,1);
+  ret -> m[0][0] = ((x1 - x0) * (z2 - z0)) - ((z1 - z0) * (y2 - y0));
+  ret -> m[1][0] = ((z1 - z0) * (x2 - x0)) - ((x1 - x0) * (z2 - z0));
+  ret -> m[2][0] = ((x1 - x0) * (y2 - y0)) - ((y1 - y0) * (x2 - x0)); //IMPORTANT value
+  return ret;
+}
+
 /*======== void draw_polygons() ==========
   Inputs:   struct matrix *polygons
   screen s
@@ -48,22 +59,27 @@ void draw_polygons( struct matrix *points, screen s, color c ) {
   }
  
   int point;
+  new matrix * temp = 
+
   for (point=0; point < points->lastcol-1; point+=3) {
-    draw_line( points->m[0][point],
-               points->m[1][point],
-               points->m[0][point+1],
-               points->m[1][point+1],
-               s, c);
-    draw_line( points->m[0][point],
-               points->m[1][point],
-               points->m[0][point+2],
-               points->m[1][point+2],
-               s, c);
-    draw_line( points->m[0][point+1],
-               points->m[1][point+1],
-               points->m[0][point+2],
-               points->m[1][point+2],
-               s, c);
+    matrix_mult
+    if(){ //Checks if 3rd value of cross_product <= 0
+      draw_line( points->m[0][point],
+                 points->m[1][point],
+                 points->m[0][point+1],
+                 points->m[1][point+1],
+                 s, c);
+      draw_line( points->m[0][point],
+                 points->m[1][point],
+                 points->m[0][point+2],
+                 points->m[1][point+2],
+                 s, c);
+      draw_line( points->m[0][point+1],
+                 points->m[1][point+1],
+                 points->m[0][point+2],
+                 points->m[1][point+2],
+                 s, c);
+    }
   }
 }
 
