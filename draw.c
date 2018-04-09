@@ -304,7 +304,7 @@ struct matrix * generate_torus( double cx, double cy, double cz,
   for (rotation = rot_start; rotation < rot_stop; rotation++) {
     rot = (double)rotation / step;
 
-    for(circle = circ_start; circle < circ_stop; circle++){
+    for(circle = circ_start; circle <= circ_stop; circle++){
       circ = (double)circle / step;
 
       x = cos(2*M_PI * rot) *
